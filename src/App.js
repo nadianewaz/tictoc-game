@@ -12,12 +12,23 @@ function Box( {value, onValueClick} ) {
 }
 
 export default function App() {
+  const [xIsNext, setXIsNext] = useState(true);
   const [squares, setSquares] = useState( Array(9).fill(null) );
   
   function handleClick (i) {    
     const nextSquares = squares.slice();
-    nextSquares[i] = "X";
+
+    if (xIsNext) {
+      nextSquares[i] = "A";
+    } 
+     else{
+      nextSquares[i] = "C";
+    }
+      
+    
     setSquares(nextSquares);
+    setXIsNext(!xIsNext); 
+    
 
   }
   return (
